@@ -1,24 +1,50 @@
 # Roundabout
 
-TODO: Write a gem description
+A Rails Engine that generates a page transition diagram for your Rails app.
+
+
+## Requirements
+
+- Ruby 1.9 or 2.0
+
+- Rails 3 or 4
+
+- RSpec 2
+
+- Capybara 1 or 2
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your Rails app's Gemfile:
 
-    gem 'roundabout'
+```ruby
+  gem 'roundabout'
+```
 
-And then execute:
+And execute:
 
-    $ bundle
+```bash
+% bundle
+```
 
-Or install it yourself as:
+Then add this line to your `spec/spec\_helper.rb`:
 
-    $ gem install roundabout
+```ruby
+require 'roundabout/rspec'
+```
+
 
 ## Usage
 
-TODO: Write usage instructions here
+Firstly, run the whole test (I suppose parallel spec is not supported ATM)
+
+```bash
+% rake spec
+```
+
+Then browse at your `http://localhost:3000/roundabout`
+
 
 ## Contributing
 

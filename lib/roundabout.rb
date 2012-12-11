@@ -1,5 +1,6 @@
 require 'roundabout/version'
 require 'roundabout/recorder'
+require 'roundabout/monkey/capybara'
 
 module Roundabout
   def self.record_transition(from, to, method, type)
@@ -12,5 +13,10 @@ module Roundabout
 
   def self.compile_page_transitions
     recorder.transitions
+  end
+
+  def self.normalize_url(path, method = nil)
+    h = Rails.application.routes.recognize_path(path, method: method)
+    "#{h[:controller]}##{h[:action]}"
   end
 end

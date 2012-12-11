@@ -1,4 +1,5 @@
 require 'roundabout/version'
+require 'roundabout/railtie'
 require 'roundabout/recorder'
 require 'roundabout/monkey/capybara'
 

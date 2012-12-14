@@ -17,7 +17,11 @@ module Roundabout
             when 'form'
               'purple'
             else
-              'blue'
+              if t['method'] != 'get'
+                'purple'
+              else
+                'blue'
+              end
             end
             g.add_edges from, to, color: color
           end

@@ -4,7 +4,7 @@ class Capybara::RackTest::Browser
   def follow_with_recording(method, path, attributes = {})
     return if path.gsub(/^#{request_path}/, '').start_with?('#')
     begin
-      Roundabout.record_transition Roundabout.normalize_url(URI.parse(driver.current_url).path), Roundabout.normalize_url(path), method, :link
+      Roundabout.record_transition Roundabout.normalize_url(URI.parse(driver.current_url).path), Roundabout.normalize_url(path, method), method, :link
     rescue => e
       p e
     end

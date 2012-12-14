@@ -28,7 +28,7 @@ And execute:
 % bundle
 ```
 
-Then add this line to your `spec/spec\_helper.rb`:
+Then add this line to your `spec/spec_helper.rb`:
 
 ```ruby
 require 'roundabout/rspec'

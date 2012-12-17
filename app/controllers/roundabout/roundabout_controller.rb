@@ -7,7 +7,7 @@ module Roundabout
     def index
       if (json = Rails.root.join('doc/roundabout.json')).exist?
         transitions = ActiveSupport::JSON.decode json.read
-        GraphViz.new(:G, type: :digraph, rankdir: 'LR') {|g|
+        viz = GraphViz.new(:G, type: :digraph, rankdir: 'LR') do |g|
           transitions.each do |t|
             from = g.add_nodes t['from'], shape: 'box'
             to = g.add_nodes t['to'], shape: 'box'
@@ -25,7 +25,17 @@ module Roundabout
             end
             g.add_edges from, to, color: color
           end
-        }.output(png: Rails.root.join('public/images/roundabout.png'))
+        end
+        respond_to do |format|
+          format.png do
+            send_data viz.output(png: String), type: 'image/png', disposition: 'inline'
+          end
+          format.html do
+            graph = GraphViz.parse_string(viz.output(dot: String))
+            @nodes, @edges = graph.each_node.values, graph.each_edge.map {|e| e[:pos].source.split(' ').take(2).reverse << e[:color].source }
+            @graph_width, @graph_height = graph.graph.data['bb'].to_s.scan(/.*?(\d+),(\d+)"/).first
+          end
+        end
       else
         render 'readme'
       end

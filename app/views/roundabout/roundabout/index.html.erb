@@ -1,2 +1,12 @@
-<%- pp @transitions %>
-<%= image_tag '/images/roundabout.png' %>
+<div id="roundabout-container" style="width: <%= @graph_width %>px; height: <%= @graph_height %>px;">
+  <div id="roundabout" data-svg-width="<%= @graph_width %>" data-svg-height="<%= @graph_height %>">
+    <% @nodes.each.with_index(1) do |node, i| %>
+      <% width, height = BigDecimal.new(node[:width].source) * 72, BigDecimal.new(node[:height].source) * 72 %>
+      <div id="roundabout-node-<%= i %>" class="node" style="top: <%= node[:pos].point[1] - height / 2 %>px; left: <%= node[:pos].point[0] - width / 2 %>px; width: <%= width %>px; height: <%= height %>px;">
+        <div class="node-name"><%= node.id %></div>
+      </div>
+    <% end %>
+    <script>window.raw_edges = '<%= @edges.to_json.html_safe %>';</script>
+  </div>
+</div>
+<p><%= link_to 'Download .png file', '/roundabout.png' %></p>

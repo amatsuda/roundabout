@@ -1,4 +1,3 @@
 Roundabout::Engine.routes.draw do
-  get '/' => 'roundabout#index'
-  root :to => 'roundabout#index'
+  get '/' => 'roundabout#index', as: 'root'
 end

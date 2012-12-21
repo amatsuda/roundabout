@@ -30,6 +30,9 @@ module Roundabout
           format.png do
             send_data viz.output(png: String), type: 'image/png', disposition: 'inline'
           end
+          format.pdf do
+            send_data viz.output(pdf: String), type: 'application/pdf', disposition: 'inline'
+          end
           format.html do
             graph = GraphViz.parse_string(viz.output(dot: String))
             @nodes, @edges = graph.each_node.values, graph.each_edge.map {|e| e[:pos].source.split(' ').take(2).reverse << e[:color].source }

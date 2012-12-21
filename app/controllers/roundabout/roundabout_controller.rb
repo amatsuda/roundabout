@@ -15,12 +15,12 @@ module Roundabout
             when 'redirect'
               'red'
             when 'form'
-              'purple'
+              'green'
             else
               if t['method'] != 'get'
-                'purple'
+                'green'
               else
-                'blue'
+                'darkblue'
               end
             end
             g.add_edges from, to, color: color

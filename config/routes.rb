@@ -1,3 +1,3 @@
 Roundabout::Engine.routes.draw do
-  get '/' => 'roundabout#index', as: 'root'
+  get '/(.:format)' => 'roundabout#index', as: 'root'
 end

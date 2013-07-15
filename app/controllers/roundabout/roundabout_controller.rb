@@ -34,7 +34,6 @@ module Roundabout
             send_data viz.output(pdf: String), type: 'application/pdf', disposition: 'inline'
           end
           format.html do
-            puts viz.output(plain: String)
             graph = GraphViz.parse_string(viz.output(dot: String))
             @nodes, @edges = graph.each_node.values, graph.each_edge.map {|e| e[:pos].source.split(' ').take(2).reverse << e[:color].source }
             @graph_width, @graph_height = graph.graph.data['bb'].to_s.scan(/.*?(\d+),(\d+)"/).first

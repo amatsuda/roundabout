@@ -5,7 +5,7 @@ require 'graphviz'
 module Roundabout
   class RoundaboutController < ::Roundabout::ApplicationController
     def index
-      if (json = Rails.root.join('doc/roundabout.json')).exist?
+      if (json = Rails.root.join('tmp/roundabout.json')).exist?
         transitions = ActiveSupport::JSON.decode json.read
         viz = GraphViz.new(:G, type: :digraph, rankdir: 'LR') do |g|
           transitions.each do |t|

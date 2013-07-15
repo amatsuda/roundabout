@@ -1,5 +1,106 @@
+$black: #444444;
+$white: white;
+$yellow: #fffebe;
+$button_yellow: #ffff4f;
+$background-color: #3aade3;
+
+// reset
+
+html, body, p, ul, ol, dl, p, li, dt, dd, tr, td, form {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+// design
+
+body {
+  margin: 20px;
+  color: $black;
+  position: relative;
+  font-family: arial,sans-serif;
+  background: $background-color url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NTExMTA1MUYzRUMxMTFFMkJDNjQ4QUM5N0I1ODJDNUMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTExMTA1MjAzRUMxMTFFMkJDNjQ4QUM5N0I1ODJDNUMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDNEZGNDMzQTNFQUExMUUyQkM2NDhBQzk3QjU4MkM1QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1MTExMDUxRTNFQzExMUUyQkM2NDhBQzk3QjU4MkM1QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PolLCroAAAAhSURBVHjaYvj//78KEDMQwkwMRIJRhXgBC5RWIaQQIMAA1wEePzIPm4IAAAAASUVORK5CYII=) repeat top right;
+}
+
+#roundabout {
+  padding: 20px;
+  z-index: 2;
+}
+
 div.node {
   position: absolute;
-  border: 1px #000 solid;
+  border: 1px #444444 solid;
   cursor: move;
+  background: $white;
+  border-radius: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 4px;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.6) 0 1px 2px;
+    background: $yellow;
+    z-index: 10
+  }
+}
+
+.node-name span {
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+svg {
+  z-index: -1;
+}
+
+@mixin button($button-color: $button_yellow) {
+  display: block;
+  color: lighten($black, 8%);
+  font-size: 11px;
+  line-height: 28px;
+  text-decoration: none;
+  border-radius: 4px;
+  text-shadow: rgba(255, 255, 255, 0.4) 0 1px 0;
+  padding: 0 12px;
+  border: darken($button-color, 16%) solid 1px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0 inset, rgba(0, 0, 0, .1) 0 1px 0;
+  background: linear-gradient($button-color, darken($button-color, 8%));
+  span {
+    font-weight: bold;
+    font-size: 16px;
+    color: $black;
+    display: inline-block;
+    margin: 0 0 0 4px;
+  }
+  &:hover {
+    background: linear-gradient(darken($button-color, 6%), darken($button-color, 12%));
+  }
+  &:active {
+    box-shadow: rgba(0, 0, 0, .1) 0 1px 1px inset, rgba(255, 255, 255, .4) 0 1px 0;
+  }
+}
+
+#downloads {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, .6);
+  padding: 12px 14px;
+  border-radius: 4px;
+}
+
+#downloads li:first-child a {
+  margin: 0 0 10px;
+}
+
+.pdf {
+  @include button(#fdf524);
+}
+
+.png {
+  @include button(#ffc2ee);
 }

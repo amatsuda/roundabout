@@ -3,11 +3,26 @@
     <% @nodes.each.with_index(1) do |node, i| %>
       <% width, height = BigDecimal.new(node[:width].source) * 72, BigDecimal.new(node[:height].source) * 72 %>
       <div id="roundabout-node-<%= i %>" class="node" style="top: <%= node[:pos].point[1] - height / 2 %>px; left: <%= node[:pos].point[0] - width / 2 %>px; width: <%= width %>px; height: <%= height %>px;">
-        <div class="node-name"><%= node.id %></div>
+        <%- node_controller_name, node_action_name = node.id.split("\n") %>
+        <div class="node-name"><span class="controller_name"><%= node_controller_name %></span><span class="controller_name"><%= node_action_name %></span></div>
       </div>
     <% end %>
     <script>window.raw_edges = '<%= @edges.to_json.html_safe %>';</script>
   </div>
 </div>
-<p><%= link_to 'Download .png file', '/roundabout.png' %></p>
-<p><%= link_to 'Download .pdf file', '/roundabout.pdf' %></p>
+<div id="downloads">
+ <ul>
+    <li>
+      <%= link_to '/roundabout.png', {:class => 'png'} do %>
+        Download
+        <span>.png</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '/roundabout.pdf', {:class => 'pdf'} do %>
+        Download
+        <span>.pdf</span>
+      <% end %>
+    </li>
+</ul>
+</div>

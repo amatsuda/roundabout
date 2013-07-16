@@ -53,3 +53,9 @@ Then browse at your `http://localhost:3000/roundabout`
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+## Team
+
+* [Akira Matsuda](https://github.com/amatsuda)
+* [Teppei Machida](http://github.com/machida)

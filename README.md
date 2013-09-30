@@ -2,6 +2,7 @@
 
 A Rails Engine that generates a page transition diagram for your Rails app.
 
+![screenshot](http://gyazo.com/a8ce6a7a957b9bf47a2197c6f3e28da9.png)
 
 ## Requirements
 

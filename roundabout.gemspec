@@ -18,6 +18,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_runtime_dependency 'capybara', ['>= 1.0.0']
-  gem.add_runtime_dependency 'rspec', ['>= 2.0.0']
   gem.add_runtime_dependency 'ruby-graphviz', ['>= 1.0.0']
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   config.after :suite do
     transitions = Roundabout.compile_page_transitions

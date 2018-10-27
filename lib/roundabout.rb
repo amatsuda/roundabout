@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'roundabout/version'
 require 'roundabout/railtie'
 require 'roundabout/recorder'

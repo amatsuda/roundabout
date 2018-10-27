@@ -17,9 +17,13 @@ module Roundabout
             rescue ::Capybara::ExpectationNotMet
             end
           when 'a'
-            type = :link
+            if (method = self[:'data-method'])
+              type = :form
+            else
+              method = :get
+              type = :link
+            end
             path_to = self[:href]
-            method = self[:'data-method'] || :get
           end
 
           ret = super

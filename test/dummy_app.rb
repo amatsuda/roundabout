@@ -9,9 +9,21 @@ ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: ':memory:'
 class RoundaboutTestApp < Rails::Application
   config.secret_key_base = config.secret_token = "I'll be the roundabout. The words will make you out 'n' out."
   config.session_store :cookie_store, key: '_myapp_session'
-  config.active_support.deprecation = :log
-  config.eager_load = false
   config.root = __dir__
+  config.load_defaults 5.2
+
+  config.assets.debug = false
+  config.cache_classes = true
+  config.eager_load = false
+  config.public_file_server.enabled = true
+  config.public_file_server.headers = {
+    'Cache-Control' => "public, max-age=#{1.hour.to_i}"
+  }
+  config.consider_all_requests_local       = true
+  config.action_controller.perform_caching = false
+  config.action_dispatch.show_exceptions = false
+  config.action_controller.allow_forgery_protection = false
+  config.active_support.deprecation = :stderr
 end
 Rails.application.initialize!
 

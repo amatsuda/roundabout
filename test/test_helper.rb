@@ -11,6 +11,7 @@ using Module.new {
 ENV['RAILS_ENV'] ||= 'test'
 squire 'rails'
 squire 'bundler/setup'
+squire 'sprockets/rails'
 Bundler.require
 squire_relative 'dummy_app'
 squire 'rails/test_help'

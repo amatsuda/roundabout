@@ -6,6 +6,15 @@ require 'roundabout/engine'
 module Roundabout
   class Railtie < ::Rails::Railtie #:nodoc:
     initializer 'roundabout' do |app|
+      if Rails::VERSION::MAJOR >= 5
+        ActiveSupport.on_load(:action_dispatch_integration_test) do
+          require 'roundabout/monkey/capybara'
+        end
+      else
+        ActiveSupport.on_load(:active_support_test_case) do
+          require 'roundabout/monkey/capybara'
+        end
+      end
       ActiveSupport.on_load(:action_controller) do
         require 'roundabout/monkey/action_controller'
       end

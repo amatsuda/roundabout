@@ -30,7 +30,7 @@
   window.paper = Raphael(0, 0, <%= @graph_width %>, <%= @graph_height %>);
 
   <%= @edges.to_json.html_safe %>.forEach(function(e) {
-    var path = "M" + e[0] + "L" + e[1]
+    var path = ["M", e[0], e[1]]
     window.paper.path(path).attr({'stroke-width': 2, stroke: e[2], 'arrow-end': 'classic-wide-long'})
   })
 })();

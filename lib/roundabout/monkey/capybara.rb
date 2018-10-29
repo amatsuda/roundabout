@@ -6,7 +6,7 @@ module Roundabout
   module Capybara
     module Node
       module Element
-        def click(*keys, **offset)
+        def click(*)
           path_from = session.current_path
           case tag_name
           when 'input'

@@ -37,7 +37,8 @@ module Roundabout
           end
           format.html do
             graph = GraphViz.parse_string(viz.output(dot: String))
-            @nodes, @edges = graph.each_node.values, graph.each_edge.map {|e| e[:pos].source.split(' ').take(2).reverse << e[:color].source }
+            @nodes = graph.each_node.values
+            @edges = graph.each_edge.map {|e| e[:pos].source.split(' ').take(2).map {|s| s.sub(/^e,/, '') }.reverse << e[:color].source }
             @graph_width, @graph_height = graph.graph.data['bb'].to_ruby.last(2)
           end
         end

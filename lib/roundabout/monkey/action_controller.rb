@@ -4,7 +4,7 @@ module Roundabout
   module ActionController
     module Redirecting
       def redirect(options = {}, response_status = {})
-        super
+        ret = super
 
         begin
           h = @_request.env['action_dispatch.request.path_parameters'].with_indifferent_access
@@ -12,6 +12,7 @@ module Roundabout
         rescue => e
           p e
         end
+        ret
       end
     end
   end

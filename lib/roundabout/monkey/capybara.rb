@@ -16,7 +16,9 @@ module Roundabout
               path_to = form[:action]
               method = form[:method]
               begin
-                method = form.first('input[type=hidden][name=_method]', visible: false).value
+                if (hidden = form.first('input[type=hidden][name=_method]', visible: false))
+                  method = hidden.value
+                end
               rescue ::Capybara::ExpectationNotMet
               end
             rescue ::Capybara::ElementNotFound

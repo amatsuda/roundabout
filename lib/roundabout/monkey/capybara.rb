@@ -37,7 +37,7 @@ module Roundabout
 
           if path_from && path_to && (path_from != path_to)
             begin
-              Roundabout.record_transition Roundabout.normalize_url(path_from), Roundabout.normalize_url(path_to, method), method, type
+              Roundabout.record_transition Roundabout.normalize_url(path_from), Roundabout.normalize_url(path_to, method), method.to_sym, type
             rescue => e
               p e
             end

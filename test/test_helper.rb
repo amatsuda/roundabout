@@ -9,6 +9,7 @@ using Module.new {
 }
 
 ENV['RAILS_ENV'] ||= 'test'
+ENV['ROUNDABOUT'] ||= '1'
 squire 'rails'
 squire 'bundler/setup'
 squire 'sprockets/rails'

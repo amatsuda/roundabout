@@ -7,7 +7,7 @@ require 'action_controller/railtie'
 ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: ':memory:')
 
 class RoundaboutTestApp < Rails::Application
-  config.secret_key_base = config.secret_token = "I'll be the roundabout. The words will make you out 'n' out."
+  config.secret_key_base = "I'll be the roundabout. The words will make you out 'n' out."
   config.session_store :cookie_store, key: '_myapp_session'
   config.root = __dir__
   config.load_defaults 5.2

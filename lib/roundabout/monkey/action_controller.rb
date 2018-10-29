@@ -3,7 +3,7 @@
 module Roundabout
   module ActionController
     module Redirecting
-      def redirect(options = {}, response_status = {})
+      def redirect_to(*)
         ret = super
 
         begin
@@ -18,4 +18,4 @@ module Roundabout
   end
 end
 
-::ActionController::Redirecting.prepend Roundabout::ActionController::Redirecting
+::ActionController::Base.prepend Roundabout::ActionController::Redirecting

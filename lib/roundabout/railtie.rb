@@ -26,10 +26,10 @@ module Roundabout
         end
       end
 
-      ActiveSupport.on_load :after_initialize do
+      config.after_initialize do |app|
         if Rails.env.development?
-          Rails.application.routes.append do
-            mount Roundabout::Engine, at: '/roundabout'
+          app.routes.append do
+            mount Roundabout::Engine => '/roundabout'
           end
         end
       end

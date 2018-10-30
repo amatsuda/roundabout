@@ -5,7 +5,7 @@ require 'roundabout/engine'
 
 module Roundabout
   class Railtie < ::Rails::Railtie #:nodoc:
-    initializer 'roundabout' do |app|
+    initializer 'roundabout' do
       if ENV['ROUNDABOUT']
         if Rails::VERSION::MAJOR >= 5
           ActiveSupport.on_load :action_dispatch_integration_test do

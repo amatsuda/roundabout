@@ -26,8 +26,8 @@ module Roundabout
         end
       end
 
-      config.after_initialize do |app|
-        if Rails.env.development?
+      if Rails.env.development?
+        config.after_initialize do |app|
           app.routes.append do
             mount Roundabout::Engine => '/roundabout'
           end

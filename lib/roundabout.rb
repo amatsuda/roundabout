@@ -21,4 +21,9 @@ module Roundabout
     h = Rails.application.routes.recognize_path(path, method: method)
     "#{h[:controller]}##{h[:action]}"
   end
+
+  def self.save_results
+    transitions = compile_page_transitions
+    Rails.root.join('tmp/roundabout.json').open('w') {|f| f.write transitions.to_json} unless transitions.empty?
+  end
 end

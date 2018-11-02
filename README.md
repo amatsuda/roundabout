@@ -1,59 +1,52 @@
 # Roundabout
 
-A Rails Engine that generates a page transition diagram for your Rails app.
+A Rails Engine that generates and shows a page transition diagram for your Rails app from system tests.
 
-![screenshot](http://gyazo.com/a8ce6a7a957b9bf47a2197c6f3e28da9.png)
+![Example](example_diagram.png)
+
 
 ## Requirements
 
-- Ruby 1.9 or 2.0
+- Ruby 2.x
 
-- Rails 3 or 4
+- Rails 3 or newer
 
-- RSpec 2
+- RSpec / Minitest / TestUnit
 
-- Capybara 1 or 2
+- Capybara
 
 
 ## Installation
 
-Add this line to your Rails app's Gemfile:
+Bundle this gem to your Rails app's development and test env:
 
 ```ruby
-  gem 'roundabout'
-```
-
-And execute:
-
-```bash
-% bundle
-```
-
-Then add this line to your `spec/spec_helper.rb`:
-
-```ruby
-require 'roundabout/rspec'
+  gem 'roundabout', group :development, :test
 ```
 
 
 ## Usage
 
-Firstly, run the whole test (I suppose parallel spec is not supported ATM)
+Run the whole tests with `ROUNDABOUT` envvar (I suppose parallel spec is not supported ATM):
 
 ```bash
-% rake spec
+% ROUNDABOUT=1 rails test:system
 ```
 
-Then browse at your `http://localhost:3000/roundabout`
+All page transitions via capybara will be recorded, then woven into a diagram.
+
+To see the generated diagram, just browse at your `http://localhost:3000/roundabout`.
+You can also download a png image version and a PDF version from that page.
+
+
+## Example
+
+The image shown at the very top of this documentation was generated from [Redmine](https://github.com/redmine/redmine) project's codebase.
 
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Send me a PR with a patch.
 
 
 ## Team

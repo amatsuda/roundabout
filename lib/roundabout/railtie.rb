@@ -21,7 +21,7 @@ module Roundabout
           require 'roundabout/monkey/action_controller'
         end
 
-        config.after_initialize do |app|
+        config.after_initialize do
           require 'roundabout/monkey/capybara'
           require 'roundabout/rspec' if defined? RSpec
           require 'roundabout/test-unit' if defined? TestUnitRails

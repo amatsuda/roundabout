@@ -21,7 +21,7 @@ A Rails Engine that generates and shows a page transition diagram for your Rails
 Bundle this gem to your Rails app's development and test env:
 
 ```ruby
-  gem 'roundabout', group :development, :test
+  gem 'roundabout', group: [:development, :test]
 ```
 
 

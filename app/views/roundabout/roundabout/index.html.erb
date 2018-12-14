@@ -1,7 +1,7 @@
 <div id="roundabout-container" style="width: <%= @graph_width %>px; height: <%= @graph_height %>px;">
   <div id="roundabout">
     <% @nodes.each.with_index(1) do |node, i| %>
-      <% width, height = BigDecimal.new(node[:width].source) * 72, BigDecimal.new(node[:height].source) * 72 %>
+      <% width, height = BigDecimal(node[:width].source) * 72, BigDecimal(node[:height].source) * 72 %>
       <div id="roundabout-node-<%= i %>" class="node" style="top: <%= node[:pos].point[1] - height / 2 %>px; left: <%= node[:pos].point[0] - width / 2 %>px; width: <%= width %>px; height: <%= height %>px;">
         <%- node_controller_name, node_action_name = node.id.split("\n") %>
         <div class="node-name"><span class="controller_name"><%= node_controller_name %></span><span class="controller_name"><%= node_action_name %></span></div>

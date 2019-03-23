@@ -1,15 +1,13 @@
 <p>You need to generate the page transition data first.</p>
 
-Add this line to your <strong>spec/spec_helper.rb</strong>:
+Please run the system tests with envvar <strong>ROUNDABOUT</strong>.
 
 <pre>
-require 'roundabout/rspec'
-</pre>
+test-unit / minitest:
+% ROUNDABOUT=1 rails test:system
 
-And run the specs.
-
-<pre>
-% rake spec
+RSpec
+% ROUNDABOUT=1 rails test:system
 </pre>
 
 Then reload this page.
